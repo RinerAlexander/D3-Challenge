@@ -46,14 +46,26 @@ d3.csv("assets/data/data.csv").then(function(data) {
     .classed("axis", true)
     .call(leftAxis);
 
+    //add Dots
     chartGroup.append('g')
-    .selectAll("dot")
-    .data(data)
-    .enter()
-    .append("circle")
-      .attr("cx", entry => xScale(entry.poverty))
-      .attr("cy", entry => yScale(entry.obesity))
-      .attr("r", 4)
-      .style("fill", "#69b3a2")
+        .selectAll("dot")
+        .data(data)
+        .enter()
+        .append("circle")
+        .attr("cx", entry => xScale(entry.poverty))
+        .attr("cy", entry => yScale(entry.obesity))
+        .attr("r", 12)
+        .style("fill", "#69b3a2");
+    
+    chartGroup.append("g")
+        .selectAll("text")
+        .data(data)
+        .enter()
+        .append("text")
+        .text(entry => entry.abbr)
+        .attr("x", entry => xScale(entry.poverty)-10)
+        .attr("y", entry => yScale(entry.obesity)+5);
+    
+    
 
 });
