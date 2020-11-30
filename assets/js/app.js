@@ -24,7 +24,6 @@ d3.csv("assets/data/data.csv").then(function(data) {
         entry.poverty = +entry.poverty;
         entry.obesity = +entry.obesity;
     });
-    console.log(data[0].poverty);
     
     // set up x axis
     var xScale = d3.scaleLinear()
@@ -47,14 +46,14 @@ d3.csv("assets/data/data.csv").then(function(data) {
     .classed("axis", true)
     .call(leftAxis);
 
-    svg.append('g')
+    chartGroup.append('g')
     .selectAll("dot")
     .data(data)
     .enter()
     .append("circle")
-      .attr("cx", function (entry) { return xScale(entry.poverty); } )
-      .attr("cy", function (entry) { return yScale(entry.obesity); } )
-      .attr("r", 1.5)
+      .attr("cx", entry => xScale(entry.poverty))
+      .attr("cy", entry => yScale(entry.obesity))
+      .attr("r", 4)
       .style("fill", "#69b3a2")
 
 });
