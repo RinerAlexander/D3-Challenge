@@ -54,7 +54,7 @@ d3.csv("assets/data/data.csv").then(function(data) {
         .append("circle")
         .attr("cx", entry => xScale(entry.poverty))
         .attr("cy", entry => yScale(entry.obesity))
-        .attr("r", 16)
+        .attr("r", 11)
         .style("fill", "#69b3a2");
     
     //add Text labels
@@ -64,8 +64,9 @@ d3.csv("assets/data/data.csv").then(function(data) {
         .enter()
         .append("text")
         .text(entry => entry.abbr)
-        .attr("x", entry => xScale(entry.poverty)-10)
-        .attr("y", entry => yScale(entry.obesity)+5);
+        .attr("x", entry => xScale(entry.poverty)-8)
+        .attr("y", entry => yScale(entry.obesity)+3)
+        .style("font-size", "10px");
     
     //add axis labels
     chartGroup.append("text")
